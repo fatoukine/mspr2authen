@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>{% block title %}Bienvenue !{% endblock %}</title>
+
+    {{ encore_entry_link_tags('app') }}
+    {% block stylesheets %}{% endblock %}
+</head>
+<body>
+<nav class="navbar navbar-expand navbar-dark bg-dark">
+    <div class="container">
+        <a class="navbar-brand" href="#">Clinique LE CHALET</a>
+        {% set routeName = app.request.attributes.get('_route') %}
+        <ul class="navbar-nav flex-row">
+
+            <li class="nav-item">
+                <a class="nav-link {{ routeName == 'app_login' ? 'active' }}" href="{{ path('app_login') }}">Connexion</a>
+            </li>
+        </ul>
+    </div>
+</nav>
+<main>{% block body %}{% endblock %}</main>
+<footer class="py-4 bg-dark">
+    <div class="container text-center">
+        <a href="https://www.epsi.fr/">EPSI - Pro alterna</a>
+    </div>
+</footer>
+
+{{ encore_entry_script_tags('app') }}
+{% block javascripts %}{% endblock %}
+</body>
+</html>
